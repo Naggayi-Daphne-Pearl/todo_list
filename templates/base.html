@@ -5,11 +5,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- linking style sheet using Jinja 2 -->
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}"/>
+    <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap/css/bootstrap.css') }}"/>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}"> 
     {% block head %} {% endblock %}
+
 </head>
 <body>
-    {% block body %} {% endblock %}
+    {% block body %} 
+    <script src="{{ url_for('static' , filename='bootstrap/js/bootstrap.js')}}"></script>
+    {% endblock %}
 
 </body>
 </html>
