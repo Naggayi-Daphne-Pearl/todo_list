@@ -3,7 +3,7 @@ version: '2.0'
 services:
   web:
     build: .
-    command: gunicorn myapp:app --bind 0.0.0.0:$PORT
+    command: gunicorn to do
     environment:
       PORT: 80
     ports:
