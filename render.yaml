@@ -3,7 +3,7 @@ version: '2.0'
 services:
   web:
     build: .
-    command: gunicorn todo:todo --bind 0.0.0.0:$PORT
+    command: gunicorn app:app --bind 0.0.0.0:$PORT
     environment:
       PORT: 80
     ports:
