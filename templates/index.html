@@ -1,39 +1,42 @@
-<!-- Template Inhertiance -->
 {% extends 'base.html' %} {% block head %}
-<title>TO DO LIST</title>
+<title>Task Master</title>
 {% endblock %} {% block body %}
-
-<div class="container">
-  <h1>TO DO LIST</h1>
-  <table class="table">
-    <thread>
+<div class="container" style="justify-content: center; align-items: center">
+  <h3 style="text-align: center">To do list</h3>
+  {% if tasks|length < 1 %}
+  <h4 style="text-align: center">There are no tasks. Create one below!</h4>
+  {% else %}
+  <table class="table-light">
+    <thead>
       <tr>
-        <th>Task</th>
-        <th>Date Created</th>
+        <th scope="col">Task</th>
+        <th scope="col">Added</th>
+        <th scope="col">Actions</th>
       </tr>
-    </thread>
-   
-      {% for task in tasks %}
+    </thead>
+
+    {% for task in tasks %}
+    <tbody>
       <tr>
         <td>{{ task.content }}</td>
         <td>{{ task.date_created.date() }}</td>
         <td>
-          <a href=""
-            ><button type="button" class="btn btn-danger">Delete</button></a
-          >
-        </td>
-        <td>
-          <a href=""
-            ><button type="button" class="btn btn-dark">Edit</button></a
-          >
+          <a href="/delete/{{task.id}}"><button class="btn" type="button">Delete</button></a>
+          <br />
+          <a href="/update/{{task.id}}"><button class="btn" type="button">Update</button></a>
         </td>
       </tr>
-      {% endfor %}
-   
-  </table>
-  <form action="/" method="POST"></form>
-  <input type="text" name="content" id="content" />
-  <input type="submit" value="Add Task" />
-</div>
+    </tbody>
 
+    {% endfor %}
+  </table>
+  {% endif %}
+
+  <div class="form">
+    <form action="/" method="POST" class="add-task">
+      <input type="text" name="content" id="content" />
+      <button type="submit" class="btn">Add Task</button>
+    </form>
+  </div>
+</div>
 {% endblock %}
