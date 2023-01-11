@@ -1,5 +1,5 @@
 <!-- Template Inhertiance -->
-{% extends 'base.html' %} {% block head %} 
+{% extends 'base.html' %} {% block head %}
 <title>TO DO LIST</title>
 {% endblock %} {% block body %}
 
@@ -12,23 +12,28 @@
         <th>Date Created</th>
       </tr>
     </thread>
-    <tbody>
+   
+      {% for task in tasks %}
       <tr>
-        <td></td>
-        <td></td>
+        <td>{{ task.content }}</td>
+        <td>{{ task.date_created.date() }}</td>
         <td>
-          <a href=""><button type="button" class="btn btn-danger">Delete</button></a>
+          <a href=""
+            ><button type="button" class="btn btn-danger">Delete</button></a
+          >
         </td>
         <td>
-          <a href=""><button type="button" class="btn btn-dark">Edit</button></a>
+          <a href=""
+            ><button type="button" class="btn btn-dark">Edit</button></a
+          >
         </td>
       </tr>
-    </tbody>
+      {% endfor %}
+   
   </table>
   <form action="/" method="POST"></form>
-  <input type="text" name="content" id="content"/>
-  <input type="submit" value="Add Task"/>
-
+  <input type="text" name="content" id="content" />
+  <input type="submit" value="Add Task" />
 </div>
 
 {% endblock %}
