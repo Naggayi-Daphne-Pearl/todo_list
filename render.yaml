@@ -1,0 +1,14 @@
+version: '2.0'
+
+services:
+  web:
+    build: .
+    command: gunicorn myapp:app --bind 0.0.0.0:$PORT
+    environment:
+      PORT: 80
+    ports:
+      - "80:80"
+    volumes:
+      - .:/app
+    depends_on:
+      - db
